@@ -1,0 +1,36 @@
+{
+    "name": "ameax/filament-settings",
+    "description": "A flexible settings management system for Laravel with Filament integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Schmidt",
+            "email": "69188126+ms-aranes@users.noreply.github.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.0",
+        "illuminate/database": "^12.0",
+        "filament/filament": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ameax\\FilamentSettings\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ameax\\FilamentSettings\\SettingsServiceProvider"
+            ],
+            "aliases": {
+                "Settings": "Ameax\\FilamentSettings\\Facades\\Settings"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
