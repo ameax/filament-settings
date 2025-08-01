@@ -22,10 +22,9 @@ class SettingsService
     {
         $definition = self::getDefinition($key);
 
-        Setting::updateOrCreate(
+        $setting = Setting::query()->firstOrNew(
             ['key' => $key],
             [
-                'value' => $value,
                 'type' => $definition['type'] ?? 'string',
                 'group' => $definition['group'] ?? 'general',
                 'tab' => $definition['tab'] ?? null,
@@ -33,6 +32,9 @@ class SettingsService
                 'metadata' => $definition,
             ]
         );
+
+        $setting->value = $value;
+        $setting->save();
 
         self::$cache[$key] = $value;
         Cache::forget('filament-settings');
