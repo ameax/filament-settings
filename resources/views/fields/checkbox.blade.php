@@ -10,7 +10,7 @@
                 value="{{ $optionKey }}"
                 class="rounded border-gray-300 text-primary-600 focus:ring-primary-600 @error('data.' . $key) border-danger-600 @enderror"
             />
-            <span>{{ __($optionLabel) }}</span>
+            <span class="ml-1">{{ __($optionLabel) }}</span>
         </label>
     @endforeach
 </div>
