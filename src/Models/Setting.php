@@ -31,7 +31,7 @@ class Setting extends Model
             'boolean' => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             'integer' => (int) $value,
             'float' => (float) $value,
-            'json', 'array' => json_decode($value, true),
+            'json', 'array', 'checkbox' => json_decode($value, true),
             'encrypted' => $this->decryptValue($value),
             default => $value,
         };
@@ -47,7 +47,7 @@ class Setting extends Model
 
         $this->attributes['value'] = match ($this->type) {
             'boolean' => $value ? '1' : '0',
-            'json', 'array' => json_encode($value),
+            'json', 'array', 'checkbox' => json_encode($value),
             'encrypted' => Crypt::encryptString((string) $value),
             default => (string) $value,
         };
