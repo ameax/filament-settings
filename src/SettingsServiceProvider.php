@@ -32,9 +32,14 @@ class SettingsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../resources/views/' => resource_path('views/vendor/filament-settings'),
             ], 'filament-settings-views');
+
+            $this->publishes([
+                __DIR__.'/../resources/lang' => $this->app->langPath('vendor/filament-settings'),
+            ], 'filament-settings-translations');
         }
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'filament-settings');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'filament-settings');
     }
 }
