@@ -15,7 +15,7 @@ class ManageSettings extends Page
 
     protected static ?string $title = null;
 
-    protected static string $view = 'filament-settings::pages.manage-settings';
+    protected string $view = 'filament-settings::pages.manage-settings';
 
     protected static ?int $navigationSort = 900;
 
