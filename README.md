@@ -124,6 +124,49 @@ Settings::clearCache();
 <h1>{{ \Ameax\FilamentSettings\Facades\Settings::get('shop.name') }}</h1>
 ```
 
+## Tailwind CSS Configuration
+
+If you're using custom Tailwind classes in your published views, you need to add the package's resource paths to your `tailwind.config.js` to ensure all classes are generated:
+
+```javascript
+module.exports = {
+    content: [
+        // ... your existing content paths
+        './vendor/ameax/filament-settings/resources/views/**/*.blade.php',
+    ],
+    // ... rest of your config
+}
+```
+
+This is especially important if you:
+- Published and customized the package views
+- Added custom Tailwind classes to the blade templates
+- Are experiencing missing styles in production
+
+### For Filament Projects
+
+If you're using Filament, make sure to also include the package views in your Filament theme's `tailwind.config.js`:
+
+```javascript
+import preset from './vendor/filament/support/tailwind.config.preset'
+
+export default {
+    presets: [preset],
+    content: [
+        // ... your existing content paths
+        './vendor/ameax/filament-settings/resources/views/**/*.blade.php',
+        // If you published the views:
+        './resources/views/vendor/filament-settings/**/*.blade.php',
+    ],
+}
+```
+
+After updating your Tailwind configuration, rebuild your assets:
+
+```bash
+npm run build
+```
+
 ## Advanced Usage
 
 ### Custom Validation
